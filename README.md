@@ -30,7 +30,7 @@ Get your API key from firebase [refer video](https://pip.pypa.io/en/stable/) and
 
 Initialize Firebase Config [refer video](https://pip.pypa.io/en/stable/) to resources\views\auth\login.blade.php
 
-#All set now authentication using firebase for your larvel project is ready to use
+<h2>**All set now authentication using firebase for your larvel project is ready to use**</h2>
 
 ## Thanks for downloading this project!
 
