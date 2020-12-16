@@ -6,7 +6,7 @@ Have an idea to develop a **Laravel** project using firebase database, this repo
 
 ## [Tutorial for connecting this project to firebase.](https://www.youtube.com/watch?v=75aEgBYaexg&t=22s)
 
-https://
+https://https://www.youtube.com/watch?v=75aEgBYaexg&t=22s
 
 ## Prerequisite
 
