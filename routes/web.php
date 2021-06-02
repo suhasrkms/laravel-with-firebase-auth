@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
+
+Route::resource('/password/reset', App\Http\Controllers\Auth\PasswordResetController::class);
