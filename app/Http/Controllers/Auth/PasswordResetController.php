@@ -53,9 +53,8 @@ class PasswordResetController extends Controller
             Session::flash('message', 'An email has been sent. Please check your inbox.');
             return back()->withInput();
         } catch (FirebaseException $e) {
-           // throw ValidationException::withMessages()
-           Session::flash('error', 'Cannot Reset Password, Try again later !!');
-           return back()->withInput();
+          Session::flash('error', $e->getMessage());
+          return back()->withInput();
         }
 
 
