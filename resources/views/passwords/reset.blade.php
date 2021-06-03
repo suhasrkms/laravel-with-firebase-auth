@@ -11,6 +11,17 @@
             @if(Session::has('message'))
               <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
+            @if(Session::has('error'))
+              <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('error') }}</p>
+            @endif
+            @if ($errors->any())
+              <ul class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                  {{ $error }} <br>
+                @endforeach
+              </ul>
+            @endif
+
             {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\Auth\PasswordResetController@store']) !!}
 
             <div class="form-group">

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 use Kreait\Firebase\Auth;
+use Kreait\Firebase\Exception\FirebaseException;
+use Illuminate\Validation\ValidationException;
 use Session;
 
 
@@ -42,7 +44,23 @@ class PasswordResetController extends Controller
     public function store(Request $request)
     {
         //
-        $email = $request->email;
+        $request->validate([
+          'email' => 'required',
+        ]);
+        try {
+            $email = $request->email;
+            $link = app('firebase.auth')->sendPasswordResetLink($email);
+            Session::flash('message', 'An email has been sent. Please check your inbox.');
+            return back()->withInput();
+        } catch (FirebaseException $e) {
+           // throw ValidationException::withMessages()
+           Session::flash('error', 'Cannot Reset Password, Try again later !!');
+           return back()->withInput();
+        }
+
+
+
+
         // $link = app('firebase.auth')->getPasswordResetLink('suhas01072002@gmail.com');
         // $data['link'] = $link;
         // Mail::send('passwords.reset', compact('data'),
@@ -51,9 +69,7 @@ class PasswordResetController extends Controller
         //   ->subject('Password Reset');
         // });
         // return view('passwords.reset');
-        $link = app('firebase.auth')->sendPasswordResetLink($email);
-        Session::flash('message', 'An email has been sent. Please check your inbox.');
-        return back()->withInput();
+
 
     }
 
