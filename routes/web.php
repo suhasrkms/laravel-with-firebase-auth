@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user');
+
+Route::get('/email/verify', [App\Http\Controllers\Auth\PasswordResetController::class, 'verify_email'])->name('verify');
 
 Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
 

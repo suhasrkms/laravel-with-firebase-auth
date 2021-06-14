@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Auth;
+use Kreait\Firebase\Exception\FirebaseException;
+use Session;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+      // FirebaseAuth.getInstance().getCurrentUser();
+        $uid = Session::get('uid');
+        $user = app('firebase.auth')->getUser($uid);
         return view('home');
+        // return $user;
     }
 }

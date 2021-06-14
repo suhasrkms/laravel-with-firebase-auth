@@ -7,10 +7,12 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Auth as FirebaseAuth;
+use Kreait\Firebase\Auth\SignInResult\SignInResult;
 use Kreait\Firebase\Exception\FirebaseException;
 use Illuminate\Validation\ValidationException;
 
 use Auth;
+use Session;
 use App\Models\User;
 
 class LoginController extends Controller
@@ -49,6 +51,11 @@ class LoginController extends Controller
        try {
           $signInResult = $this->auth->signInWithEmailAndPassword($request['email'], $request['password']);
           $user = new User($signInResult->data());
+
+          //uid Session
+          $loginuid = $signInResult->firebaseUserId();
+          Session::put('uid',$loginuid);
+
           $result = Auth::login($user);
           return redirect($this->redirectPath());
        } catch (FirebaseException $e) {

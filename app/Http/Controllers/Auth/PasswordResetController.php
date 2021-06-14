@@ -25,6 +25,24 @@ class PasswordResetController extends Controller
         return view("passwords.reset");
     }
 
+    public function verify_email()
+    {
+      $uid = Session::get('uid');
+      $verify = app('firebase.auth')->getUser($uid)->emailVerified;
+        if ($verify == 1) {
+          return redirect()->route('home');
+        }
+        else{
+          try {
+            $email = app('firebase.auth')->getUser($uid)->email;
+            $link = app('firebase.auth')->sendEmailVerificationLink($email);
+          } catch (FirebaseException $e) {
+            Session::flash('error', $e->getMessage());
+          }
+          return view("passwords.verify");
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -78,9 +96,20 @@ class PasswordResetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function verify($request)
     {
         //
+        try {
+          $uid = Session::get('uid');
+          $email = app('firebase.auth')->getUser($uid)->email;
+          $link = app('firebase.auth')->sendEmailVerificationLink($email);
+
+          Session::flash('resent', 'An email has been sent. Please check your inbox.');
+          return back()->withInput();
+        } catch (FirebaseException $e) {
+          Session::flash('error', $e->getMessage());
+          return back()->withInput();
+        }
     }
 
     /**
