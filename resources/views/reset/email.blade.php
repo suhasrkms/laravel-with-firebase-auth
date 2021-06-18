@@ -20,7 +20,7 @@
                     Before proceeding, please check your email for a verification link.
                     If you did not receive the email
 
-                        <form class="d-inline" method="POST" action="App\Http\Controllers\Auth\PasswordResetController@verify">
+                        <form class="d-inline" method="POST" action="App\Http\Controllers\Auth\ResetController@verify">
                             @csrf
                             <button type="submit" class="btn btn-link p-0 m-0 align-baseline" style="text-decoration:none;">{{ __('click here to request another') }}</button>.
                         </form>

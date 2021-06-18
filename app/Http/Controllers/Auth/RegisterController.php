@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Kreait\Firebase\Auth as FirebaseAuth;
 use Kreait\Firebase\Exception\FirebaseException;
+use Illuminate\Validation\ValidationException;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -43,19 +45,24 @@ class RegisterController extends Controller
        return Validator::make($data, [
           'name' => ['required', 'string', 'max:255'],
           'email' => ['required', 'string', 'email', 'max:255'],
-          'password' => ['required', 'string', 'min:8', 'confirmed'],
+          'password' => ['required', 'string', 'min:8', 'max:12', 'confirmed'],
        ]);
     }
     protected function register(Request $request) {
-       $this->validator($request->all())->validate();
-       $userProperties = [
-          'email' => $request->input('email'),
-          'emailVerified' => false,
-          'password' => $request->input('password'),
-          'displayName' => $request->input('name'),
-          'disabled' => false,
-       ];
-       $createdUser = $this->auth->createUser($userProperties);
-       return redirect()->route('login');
+       try {
+         $this->validator($request->all())->validate();
+         $userProperties = [
+            'email' => $request->input('email'),
+            'emailVerified' => false,
+            'password' => $request->input('password'),
+            'displayName' => $request->input('name'),
+            'disabled' => false,
+         ];
+         $createdUser = $this->auth->createUser($userProperties);
+         return redirect()->route('login');
+       } catch (FirebaseException $e) {
+          Session::flash('error', 'The email address is already in use by another account.');
+          return back()->withInput();
+       }
     }
  }

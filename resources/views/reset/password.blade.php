@@ -8,21 +8,33 @@
         <div class="card">
           <div class="card-header">Reset Password</div>
           <div class="card-body">
+
             @if(Session::has('message'))
-              <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+              <div class="alert alert-info alert-dismissible fade show">
+                {{ Session::get('message') }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              </div>
             @endif
+
             @if(Session::has('error'))
-              <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('error') }}</p>
+              <div class="alert alert-danger alert-dismissible fade show">
+                {{ Session::get('error') }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              </div>
             @endif
+
             @if ($errors->any())
               <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
-                  {{ $error }} <br>
+                  <div class="alert alert-danger alert-dismissible fade show">
+                    {{ $error }}
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  </div>
                 @endforeach
               </ul>
             @endif
 
-            {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\Auth\PasswordResetController@store']) !!}
+            {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\Auth\ResetController@store']) !!}
 
             <div class="form-group">
               {!! Form::label('email', 'Email:') !!}

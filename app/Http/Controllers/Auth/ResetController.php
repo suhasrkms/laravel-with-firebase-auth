@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 use Session;
 
 
-class PasswordResetController extends Controller
+class ResetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +21,7 @@ class PasswordResetController extends Controller
      */
     public function index()
     {
-        //
-        return view("passwords.reset");
+        return view("reset.password");
     }
 
     public function verify_email()
@@ -37,9 +36,9 @@ class PasswordResetController extends Controller
             $email = app('firebase.auth')->getUser($uid)->email;
             $link = app('firebase.auth')->sendEmailVerificationLink($email);
           } catch (FirebaseException $e) {
-            Session::flash('error', $e->getMessage());
+            Session::flash('error', $error);
           }
-          return view("passwords.verify");
+          return view("reset.email");
         }
     }
 
@@ -59,6 +58,8 @@ class PasswordResetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // Password Reset
     public function store(Request $request)
     {
         //
@@ -71,23 +72,10 @@ class PasswordResetController extends Controller
             Session::flash('message', 'An email has been sent. Please check your inbox.');
             return back()->withInput();
         } catch (FirebaseException $e) {
-          Session::flash('error', $e->getMessage());
+          $error = str_replace('_', ' ', $e->getMessage());
+          Session::flash('error', $error);
           return back()->withInput();
         }
-
-
-
-
-        // $link = app('firebase.auth')->getPasswordResetLink('suhas01072002@gmail.com');
-        // $data['link'] = $link;
-        // Mail::send('passwords.reset', compact('data'),
-        // function ($m) {
-        //   $m->to('suhas01072002@gmail.com','hawle')
-        //   ->subject('Password Reset');
-        // });
-        // return view('passwords.reset');
-
-
     }
 
     /**
@@ -96,9 +84,10 @@ class PasswordResetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     // Verify Email Store Method
     public function verify($request)
     {
-        //
         try {
           $uid = Session::get('uid');
           $email = app('firebase.auth')->getUser($uid)->email;
