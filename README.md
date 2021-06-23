@@ -1,5 +1,11 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub forks](https://img.shields.io/github/forks/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/network)
+[![GitHub stars](https://img.shields.io/github/stars/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/issues)
+
+
 # About
 
 Have an idea to develop a **Laravel** project using firebase database, this repository helps in using firebase as authentication for laravel project.
