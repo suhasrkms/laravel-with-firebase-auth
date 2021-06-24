@@ -61,7 +61,7 @@ class RegisterController extends Controller
          $createdUser = $this->auth->createUser($userProperties);
          return redirect()->route('login');
        } catch (FirebaseException $e) {
-          Session::flash('error', 'The email address is already in use by another account.');
+          Session::flash('error', $e->getMessage());
           return back()->withInput();
        }
     }
