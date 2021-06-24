@@ -5,14 +5,21 @@
 [![GitHub stars](https://img.shields.io/github/stars/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/issues)
 
-
+# Important
+- For only Email Authenticate System [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/7825367e9afaf7b73b45091ba544fdb806be4b37.zip)
+- For Email Authentication with Password Reset Feature [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/e4402356e18e048d7681ae3f66d8908e53608158.zip)
+- For Email Authentication with Password Reset & Email Verification Feature [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/refs/heads/main.zip)
+    
+ 
 # About
 
 Have an idea to develop a **Laravel** project using firebase database, this repository helps in using firebase as authentication for laravel project.
 
 ## [Tutorial for connecting this project to firebase.](https://www.youtube.com/watch?v=75aEgBYaexg&t=22s)
 
-www.youtube.com/watch?v=75aEgBYaexg&t=22s
+- Implement only Email Authenticate System [watch here](https://youtu.be/75aEgBYaexg)
+- Implementing Password Reset Feature [watch here](https://youtu.be/WC6m5I26MUE)
+- Implementing Email Verification Feature [watch here](https://youtu.be/_zBihJ2JLi0)
 
 ## Prerequisite
 
