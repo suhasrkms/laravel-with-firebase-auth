@@ -8,7 +8,7 @@
 # Important
 - For only Email Authenticate System [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/7825367e9afaf7b73b45091ba544fdb806be4b37.zip)
 - For Email Authentication with Password Reset Feature [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/e4402356e18e048d7681ae3f66d8908e53608158.zip)
-- For Email Authentication with Password Reset & Email Verification Feature [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/refs/heads/main.zip)
+- For Email Authentication with Password Reset & Email Verification Feature [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/3fb96e171633de30f9154a37cc32c121612e5a90.zip)
     
  
 # About
