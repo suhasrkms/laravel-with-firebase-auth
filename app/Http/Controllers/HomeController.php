@@ -29,9 +29,19 @@ class HomeController extends Controller
     public function index()
     {
       // FirebaseAuth.getInstance().getCurrentUser();
+      try {
         $uid = Session::get('uid');
         $user = app('firebase.auth')->getUser($uid);
         return view('home');
-        // return $user;
+      } catch (\Exception $e) {
+        return $e;
+      }
+
+    }
+
+    public function customer()
+    {
+      $userid = Session::get('uid');
+      return view('customers',compact('userid'));
     }
 }

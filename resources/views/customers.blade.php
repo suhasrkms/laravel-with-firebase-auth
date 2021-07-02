@@ -31,7 +31,8 @@
                     <input id="email" type="email" class="form-control" name="email" placeholder="Email"
                            required autofocus>
                 </div>
-                <button id="submitCustomer" type="button" class="btn btn-primary mb-2">Submit</button>
+                    <input id="uid" name="uid" type="hidden" value="{{ \Session::get('uid') }}" class="form-control ">
+                <button id="submitCustomer" type="button"  class="btn btn-primary mb-2">Submit</button>
             </form>
         </div>
     </div>
@@ -41,6 +42,7 @@
     <h5># Customers</h5>
     <table class="table table-bordered">
         <tr>
+            <th>UID</th>
             <th>Name</th>
             <th>Email</th>
             <th width="180" class="text-center">Action</th>
@@ -120,6 +122,7 @@
     firebase.initializeApp(config);
     var database = firebase.database();
     var lastIndex = 0;
+
     // Get Data
     firebase.database().ref('customers/').on('value', function (snapshot) {
         var value = snapshot.val();
@@ -127,6 +130,7 @@
         $.each(value, function (index, value) {
             if (value) {
                 htmls.push('<tr>\
+            <td>' + value.uid + '</td>\
         		<td>' + value.name + '</td>\
         		<td>' + value.email + '</td>\
         		<td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateData" data-id="' + index + '">Update</button>\
@@ -138,14 +142,17 @@
         $('#tbody').html(htmls);
         $("#submitUser").removeClass('desabled');
     });
+
     // Add Data
     $('#submitCustomer').on('click', function () {
         var values = $("#addCustomer").serializeArray();
         var name = values[0].value;
         var email = values[1].value;
+        var uid = values[2].value;
         var userID = lastIndex + 1;
         console.log(values);
         firebase.database().ref('customers/' + userID).set({
+            uid: uid,
             name: name,
             email: email,
         });

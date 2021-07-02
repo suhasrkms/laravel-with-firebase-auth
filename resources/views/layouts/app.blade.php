@@ -55,12 +55,13 @@
                                 </li>
                             @endif
                         @else
+
                           <li class="nav-item">
-                              <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
+                              <a class="nav-link text-dark" href="home/profile">{{ __('Profile') }}</a>
                           </li>
 
                           <li class="nav-item">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="nav-link text-dark" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
