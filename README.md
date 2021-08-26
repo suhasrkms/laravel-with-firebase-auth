@@ -1,9 +1,10 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/github/license/suhasrkms/laravel-with-firebase-auth)](https://opensource.org/licenses/MIT)
 [![GitHub forks](https://img.shields.io/github/forks/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/network)
 [![GitHub stars](https://img.shields.io/github/stars/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/suhasrkms/laravel-with-firebase-auth)](https://github.com/suhasrkms/laravel-with-firebase-auth/issues)
+<!-- [![Github All Releases](https://img.shields.io/github/downloads/suhasrkms/laravel-with-firebase/total.svg)]() -->
 
 # Important
 - For only Email Authenticate System [click here to download](https://github.com/suhasrkms/laravel-with-firebase-auth/archive/7825367e9afaf7b73b45091ba544fdb806be4b37.zip)
