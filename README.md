@@ -19,6 +19,8 @@ Have an idea to develop a **Laravel** project using firebase database, this repo
 
 ## [Tutorial for connecting this project to firebase.](https://www.youtube.com/watch?v=75aEgBYaexg&t=22s)
 
+[![Dhyey's video stats](https://youtube-stats-card.vercel.app/api/video?videoid=75aEgBYaexg)](https://youtu.be/75aEgBYaexg)
+
 - Implement only Email Authenticate System [watch here](https://youtu.be/75aEgBYaexg)
 - Implementing Password Reset Feature [watch here](https://youtu.be/WC6m5I26MUE)
 - Implementing Email Verification Feature [watch here](https://youtu.be/_zBihJ2JLi0)
