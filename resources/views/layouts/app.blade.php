@@ -22,7 +22,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+<body  style="min-height:90vh;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -82,5 +82,11 @@
             @yield('content')
         </main>
     </div>
+
+    <footer id="sticky-footer" class="flex-shrink-0 py-4 text-dark-50">
+      <div class="container text-center">
+        <small>Made with ❤️ by <a href="https://www.youtube.com/channel/UCPj8ztcYe1D6SSuXPDpupeA" style="text-decoration: none;">Seven Stac</a></small>
+      </div>
+    </footer>
 </body>
 </html>

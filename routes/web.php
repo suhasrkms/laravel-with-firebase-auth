@@ -30,3 +30,5 @@ Route::post('login/{provider}/callback', 'Auth\LoginController@handleCallback');
 Route::resource('/home/profile', App\Http\Controllers\Auth\ProfileController::class)->middleware('user','fireauth');
 
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
+
+Route::resource('/img', App\Http\Controllers\ImageController::class);
