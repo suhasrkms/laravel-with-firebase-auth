@@ -1,0 +1,111 @@
+.header-container{
+    /* color: #5995DA; */
+    background-color: #D6E9FE; 
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    width: 900px;
+    height: 340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0px auto;
+    padding: 10px;
+}
+
+.integrate-container{
+    display: flex;
+    justify-content: center;
+    background-color: #D6E9FE;
+    padding-top: 50px;
+}
+
+.dash{
+    width: 900px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+   
+  
+}
+
+img {
+  border: 3px solid black;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.Manage{
+    border: 2px solid black;
+    width: 150px;
+    height: 150px;
+
+}
+.M1{
+    border: 2px solid black;
+    width: 150px;
+    height: 150px;
+}
+
+.button {
+    border-radius: 4px;
+    background-color: #b3310a;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 350px;
+    height:200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    border: 3px solid black;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  #divOne{
+    float: left;
+    margin-right: 50px;
+    
+  }
+
+  #divTwo{
+    margin-right: 0px;
+  }
+
+ #divThree{
+    margin-left: 50px;
+  }
+
+  
+
+  

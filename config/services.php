@@ -31,9 +31,9 @@ return [
     ],
 
     'firebase' => [
-        'api_key' => 'api_key', // Only used from JS integration
-        'auth_domain' => 'auth_domain', // Only used from JS integration
+        'api_key' => 'AIzaSyCoROKp7nbcXqPP0YtA4fO3sPiVYVyi9pI', // Only used from JS integration
+        'auth_domain' => 'laravel-auth-9a60c.firebaseapp.com', // Only used from JS integration
         'database_url' => 'https://database_url.com/',
-        'storage_bucket' => '', // Only used from JS integration
+        'storage_bucket' => 'laravel-auth-9a60c.appspot.com', // Only used from JS integration
     ],
 ];

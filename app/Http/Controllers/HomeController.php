@@ -39,9 +39,15 @@ class HomeController extends Controller
 
     }
 
-    public function customer()
-    {
-      $userid = Session::get('uid');
-      return view('customers',compact('userid'));
-    }
+
+
+    public function displayinfo(){
+
+      $patient = app('firebase.firestore')->database()->collection('patients')->documents(); 
+      
+    
+    return view('patients')->with(compact('patient'));
+ }
+
+    
 }
