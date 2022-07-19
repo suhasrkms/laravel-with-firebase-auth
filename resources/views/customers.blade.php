@@ -62,7 +62,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="custom-width-modalLabel">Update</h4>
                     <button type="button" class="close" data-dismiss="modal"
-                            aria-hidden="true">×
+                            aria-hidden="true">
                     </button>
                 </div>
                 <div class="modal-body" id="updateBody">
@@ -112,6 +112,7 @@
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
 <script>
+    
     // Initialize Firebase
     var config = {
         apiKey: "{{ config('services.firebase.api_key') }}",
@@ -131,11 +132,11 @@
             if (value) {
                 htmls.push('<tr>\
             <td>' + value.uid + '</td>\
-        		<td>' + value.name + '</td>\
-        		<td>' + value.email + '</td>\
-        		<td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateData" data-id="' + index + '">Update</button>\
-        		<button data-toggle="modal" data-target="#remove-modal" class="btn btn-danger removeData" data-id="' + index + '">Delete</button></td>\
-        	</tr>');
+                <td>' + value.name + '</td>\
+                <td>' + value.email + '</td>\
+                <td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateData" data-id="' + index + '">Update</button>\
+                <button data-toggle="modal" data-target="#remove-modal" class="btn btn-danger removeData" data-id="' + index + '">Delete</button></td>\
+            </tr>');
             }
             lastIndex = index;
         });
@@ -160,6 +161,7 @@
         lastIndex = userID;
         $("#addCustomer input").val("");
     });
+
     // Update Data
     var updateID = 0;
     $('body').on('click', '.updateData', function () {
@@ -167,17 +169,22 @@
         firebase.database().ref('customers/' + updateID).on('value', function (snapshot) {
             var values = snapshot.val();
             var updateData = '<div class="form-group">\
-		        <label for="first_name" class="col-md-12 col-form-label">Name</label>\
-		        <div class="col-md-12">\
-		            <input id="first_name" type="text" class="form-control" name="name" value="' + values.name + '" required autofocus>\
-		        </div>\
-		    </div>\
-		    <div class="form-group">\
-		        <label for="last_name" class="col-md-12 col-form-label">Email</label>\
-		        <div class="col-md-12">\
-		            <input id="last_name" type="text" class="form-control" name="email" value="' + values.email + '" required autofocus>\
-		        </div>\
-		    </div>';
+                <label for="first_name" class="col-md-12 col-form-label">Name</label>\
+                <div class="col-md-12">\
+                    <input id="first_name" type="text" class="form-control" name="name" value="' + values.name + '" required autofocus>\
+                </div>\
+            </div>\
+            <div class="form-group">\
+                <label for="last_name" class="col-md-12 col-form-label">Email</label>\
+                <div class="col-md-12">\
+                    <input id="last_name" type="text" class="form-control" name="email" value="' + values.email + '" required autofocus>\
+                </div>\
+            </div>\
+            <div class="form-group">\
+                <div class="col-md-12">\
+                    <input id="uid" type="hidden" class="form-control" name="uid" value="{{ $userid ?? '' }}" required autofocus>\
+                </div>\
+            </div>';
             $('#updateBody').html(updateData);
         });
     });
@@ -186,12 +193,16 @@
         var postData = {
             name: values[0].value,
             email: values[1].value,
-        };
+            uid: values[2].value,
+        };        
+        console.log(values);
         var updates = {};
         updates['/customers/' + updateID] = postData;
         firebase.database().ref().update(updates);
         $("#update-modal").modal('hide');
     });
+
+
     // Remove Data
     $("body").on('click', '.removeData', function () {
         var id = $(this).attr('data-id');
@@ -207,6 +218,7 @@
     $('.remove-data-from-delete-form').click(function () {
         $('body').find('.users-remove-record-model').find("input").remove();
     });
+
 </script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
