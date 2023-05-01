@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Kreait\Firebase\Auth;
+use Symfony\Component\HttpFoundation\Response;
+
+use Kreait\Firebase\Contract\Auth;
 use Kreait\Firebase\Exception\FirebaseException;
 use Session;
 
@@ -13,11 +15,9 @@ class VerifyUser
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
       $uid = Session::get('uid');
       $verify = app('firebase.auth')->getUser($uid)->emailVerified;
@@ -26,6 +26,6 @@ class VerifyUser
         }
         else{
         return $next($request);
-      }
+     }
     }
 }

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Kreait\Firebase\Auth as FirebaseAuth;
+
+use Kreait\Firebase\Contract\Auth as FirebaseAuth;
 use Kreait\Firebase\Exception\FirebaseException;
 use Illuminate\Validation\ValidationException;
 use Session;
@@ -41,13 +42,28 @@ class RegisterController extends Controller
        $this->middleware('guest');
        $this->auth = $auth;
     }
-    protected function validator(array $data) {
-       return Validator::make($data, [
-          'name' => ['required', 'string', 'max:255'],
-          'email' => ['required', 'string', 'email', 'max:255'],
-          'password' => ['required', 'string', 'min:8', 'max:12', 'confirmed'],
-       ]);
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
     }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
     protected function register(Request $request) {
        try {
          $this->validator($request->all())->validate();
@@ -65,4 +81,4 @@ class RegisterController extends Controller
           return back()->withInput();
        }
     }
- }
+}
