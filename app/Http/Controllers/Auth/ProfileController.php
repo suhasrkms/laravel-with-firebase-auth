@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
-use Kreait\Firebase\Auth;
+use Kreait\Firebase\Contract\Auth;
 use Kreait\Auth\Request\UpdateUser;
 use Kreait\Firebase\Exception\FirebaseException;
 use App\Http\Controllers\Controller;
